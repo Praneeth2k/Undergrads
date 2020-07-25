@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body style = "background-color:#272727; color:#C3073F">
+		
+	
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
+<div class="container-fluid">
+	<a class="navbar-brand" href="#"><img src="/static/images/logo.jpeg" width="180" height="90"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon" ></span>	
+	</button>
+	<div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav ml-auto">
+			{% block container %}{% endblock %}
+		</ul> 
+
+		
+	</div>
+</div>
+</nav>
+<div id = "flash" class="row">
+	<div class="col-xs-6 col-sm-4 col-md-12">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+			{% for category, message in messages %}
+			<div class="alert alert-{{ category }}">
+				{% if category == "success"  %}
+				<p style="text-align:center;"><i class="fa fa-check-circle"></i> {{ message }}</p>
+				{% else %}
+				<p style="text-align:center;"><i class="fa fa-times-circle"></i> {{ message }}</p>
+				{% endif %}
+			</div>
+			{% endfor %}
+		{% endif %}
+		{% endwith %}
+	</div>
+</div>
+
+{% block body %}{% endblock %}
+
+
+<script>
+	function index(){
+		location.href = "{{url_for('index')}}";
+	}
+	function login(){
+		location.href = "{{url_for('login')}}";
+	}
+	function signup(){
+		location.href = "{{url_for('signup')}}";
+	}
+	function signout(){
+		location.href = "{{url_for('logout')}}";
+	}
+	function book(){
+		location.href = "{{url_for('book')}}";
+	}
+</script>
+
+<!--- Footer -->
+<footer>
+<div class="container-fluid">
+	<div class="row text-center " height="75">
+		<div class="col-md-4">
+			<img src="static/images/logo.jpeg" width="200" height="100">
+		</div>
+		<div class="col-md-4">
+			<h2><span>Connect via</span></h2>
+						<a href="https://www.instagram.com/"><img src="static/images/instagram.jpg" alt="Instagram>" width="25" height="25"/></a>
+						<a href="https://www.twitter.com/"><img src="static/images/twitter.png" alt="Twitter" width="25" height="25"/></a>
+						<a href="https://www.fb.com/"><img src="static/images/facebook.png" alt="Facebook" width="25" height="25"/></a>
+		</div>
+		<div class="col-md-4" id="help">
+		<h2><span>Customer Care</span></h2>
+						E-mail:  <a style="color:rgb(135, 248, 248);" href="mailto:roveapc.2020@gmail.com?Subject=help" target="_top">roveapc.2020@gmail.com</a><br>
+						Ph-No:   761-951-9441 , 809-535-2841
+		</div>
+	</div>
+</div>
+</footer>
+
+
+
+</body>
+</html>
