@@ -35,22 +35,24 @@
 			<a class="nav-link" id = 'l'  href= "#help" style = "color:white"><i class="fa fa-telegram" aria-hidden="true"></i></i> Help</a>
 		</li>
 	</div>
-	
 	<div class="op2">
 		<li class="nav-item">
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<img src=""  alt="Image" onerror=this.src="static/images/emptydp.png" height="30" width="30" class="profile-image img-circle"></t><b class="caret" style = "padding-left: 7px;"></b></a>
+				<img src=""  alt="Image" onerror=this.src="static/images/emptydp.png" height="30" width="30" class="profile-image img-circle"></t><b class="caret" style = "padding-left: 7px;">{{username}}</b></a>
 				<ul class="dropdown-menu" style = "background-color:rgb(250, 232, 209); list-style: none;">    
-					<li><a href="#">&ensp;<i class ="fa fa-user-circle-o"></i> &nbsp;Profile</a></li>
+					<li><a href="{{url_for('profile')}}">&ensp;<i class ="fa fa-user-circle-o"></i> &nbsp;Profile</a></li>
 					<li class="divider"></li>                                                                                                                                                                                                      
-					<li><a href="">&ensp;<i class ="fa fa-arrows-v"></i> &nbsp;Go Below</a></li>
+					<li><a href="{{url_for('request_waste')}}">&ensp;<i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i> &nbsp; Request</a></li>
 					<li class="divider"></li>
-					<li><a href="">&ensp;<i class="fa fa-eject" aria-hidden="true"></i> &nbsp;Sign Out</a></li>
+					<li><a href="#">&ensp;<i class ="fa fa-arrows-v"></i> &nbsp;Go Below</a></li>
+					<li class="divider"></li>
+					<li><a href="{{url_for('logout')}}">&ensp;<i class="fa fa-eject" aria-hidden="true"></i> &nbsp;Sign Out</a></li>
 				</ul>
 			</li>
 		</li> 
 	</div>
+	
 	
 {% endblock %}
 
@@ -71,7 +73,7 @@
 					<button onclick="signup()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-user-plus"></i>  Sign Up</button>
 				</div>
 				<div class ="op2">
-					<button  onclick="login()" type="button" class="btn btn-primary btn-lg"><i class ="fa fa-sign-in"></i>Sign In</button>
+					<button  onclick="request()" type="button" class="btn btn-primary btn-lg"><i class="fa fa-american-sign-language-interpreting" aria-hidden="true"></i> Request Scrap Pick-Up </button>
 				</div>
 			
 			</div>
