@@ -12,7 +12,7 @@ class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=25)])
     confirm_password = PasswordField('Confirm Password', validators=[InputRequired(),Length(min=8, max=25),EqualTo('password')])
-    recaptcha = RecaptchaField()
+    
     submit = SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
@@ -21,19 +21,4 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember me')
     submit = SubmitField('Sign In')
 
-class EmailForm(FlaskForm):
-    email = StringField('Email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    submit = SubmitField('Password Reset Request')
 
-  
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[InputRequired(), Length(min=8, max=25)])
-    confirm_password = PasswordField('Confirm Password', validators=[InputRequired(),Length(min=8, max=25),EqualTo('password')])
-    submit = SubmitField('Reset Password')
-
-class UploadForm(FlaskForm):
-    license = FileField('License',validators=[FileRequired()])
-    
-class UpdateProfile(FlaskForm):
-    pic=FileField('Profile Picture',validators=[FileRequired()])
-    submit = SubmitField('Update')
