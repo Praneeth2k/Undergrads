@@ -14,7 +14,7 @@ ENV = 'prod'
 
 if ENV == 'prod':
     app.debug = True
-    app.config['SECRET_KEY'] ="gocorona"
+    app.config['SECRET_KEY'] ="gocoronago"
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://postgres:spoo88#asA@localhost/Hackathon'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 else:
@@ -47,18 +47,18 @@ class Seller(db.Model):
     mobile = db.Column(db.BigInteger,unique = True)
     email=db.Column(db.String(40),unique = True)
     address=db.Column(db.String(400))
-    type=db.Column(db.String(20))
+    types=db.Column(db.String(20))
     wallet = db.Column(db.Numeric,default=0)
 
  
 
-    def __init__(self,id,name, mobile ,email, address,type):
+    def __init__(self,id,name, mobile ,email, address,types):
         self.id = id  
         self.name = name
         self.mobile = mobile
         self.email = email
         self.address=address
-        self.type=type
+        self.types=types
 
 
 class Order(db.Model):
@@ -107,7 +107,10 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+         return render_template('index.html',opt=1,username=current_user.username)
+
+    return render_template('index.html',opt=2)
 
 
 
@@ -116,6 +119,7 @@ def login():
     
     if current_user.is_authenticated:
         flash(f'Logged in as {current_user.username} ','success')
+        return redirect(url_for('request_waste'))
        
 
     form = LoginForm()
@@ -127,7 +131,7 @@ def login():
                 flash('Login Successful','success')
                 login_user(user, remember = form.remember.data)
                
-                return "Done"
+                return redirect(url_for('request_waste'))
             flash('Invalid Password ','warning')
             return render_template('login.html', form=form)
         flash('Invalid Login credentials','danger')  
@@ -149,11 +153,10 @@ def signup():
             new_user = User(username=form.username.data, password=hashed_password)
             db.session.add(new_user)
             db.session.commit()
-            try :
-                new_seller = Seller(id=new_user.id ,name=form.name.data, mobile= int(form.mobile.data),email=form.email.data,address=form.address.data,type=form.u.data)
+            try:
+                new_seller = Seller(id=new_user.id ,name=form.name.data, mobile= int(form.mobile.data), email=form.email.data,address=form.address.data,types=str(form.types.data))
                 db.session.add(new_seller)
                 db.session.commit()
-                
             except:
                 fi=""
                 flash('Mobile or Email already in use.','warning')
@@ -163,9 +166,26 @@ def signup():
         except:
             flash(f'{fi} Failed to create an Account .Create Account again !!','danger')
             return redirect(url_for('signup'))
-        flash('Account created Successfully','success')
-        return "DOne 1"
+        flash('Account Created Successfully, Login to Continue','success')
+        return redirect(url_for('login'))
+        
+            
     return render_template('signup.html',form=form)
+@app.route('/profile',methods=['GET','POST'])
+@login_required
+def profile():
+    
+    
+    myprofile = db.session.execute('select u.username,c.name,c.mobile,c.email,c.address,c.wallet from "userlog" as u, sellers as c where c.id=u.id and c.id=:ids',{"ids":current_user.id}).fetchone()
+    print(myprofile.address.split(", "))
+    lists=myprofile.address.split(", ")
+    return render_template('profile.html',myprofile=myprofile,list=lists)
+
+@app.route('/request_waste')
+@login_required
+def request_waste():
+    
+    return render_template('user.html',username=current_user.username)
 
 
 
