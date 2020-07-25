@@ -175,7 +175,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 390px;
+  width: 420px;
   background: #fff;
 }
 
@@ -208,6 +208,10 @@ iframe {
 .login100-form-avatar img {
   width: 100%;
 }
+
+/*.color1 {
+  color: antiquewhite;
+}*/
 
 /*------------------------------------------------------------------
 [ Input ]*/
