@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+        <link rel="icon" type="image/icon" href="login.png">
+        <!--Importing Bootstrap4-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!--Importing local-css,js files and font-awesome-->
+        <link rel="stylesheet" type="text/css" href="global.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="signup.js">
+        </script>
+    </head>
+<body>  
+    <section class="container-fluid bg">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-6 col-md-3">
+                <!--sign up form-->
+                
+                <form class="form-container needs-validation" action="/controllers/register-controller" method="POST">
+                    <h1 style="text-align: center;">Sign Up</h1>
+                   <!--Username-->
+                    <div class="form-group">
+                        <label for="exampleInputUSername1">Full Name</label>
+                        <input type="text" class="form-control" pattern="[a-zA-Z]+" id="exampleInputUsername1" name="username" required>
+                        <div class="valid-feedback">Success! You've done it.</div>
+                        <div class="invalid-feedback">Only lowercase and uppercase letters are allowed.</div>
+                    </div>
+                   <!--email-->
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                   <!--Password-->
+                    <label for="exampleInputPassword1">Password</label>
+                    <div class="form-group input-group mb-3">
+                      <input type="password" class="form-control" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" 
+                      autocomplete="no" id="exampleInputPassword1" name="password" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text" onClick="myFunction()">
+                                <i class="fa fa-eye" id="hide1"></i>
+                                <i class="fa fa-eye-slash" id="hide2"></i>
+                            </span>
+                        </div>
+                        <div class="valid-feedback">Nice! You got this one!</div>
+                        <div class="invalid-feedback">At least 6 chars: 1 uppercase, 1 lowercase and numeric</div>
+                    </div>
+                   <!--DOB-->
+                    <label for="exampleInputdob1">Date Of Birth</label>
+                    <div class="form-group input-group mb-3" id="datePicker">
+                        <input type="date" class="form-control" id="exampleInputdob" name="dob" required>
+                    </div>
+                   <!--Gender-->
+                    <label for="exampleInputgender1">Gender</label>&nbsp&nbsp
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male" required>
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                     
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                   
+                    <input type="submit" class="btn btn-primary btn-block" value="Submit">
+                  
+                </form>
+            </section>
+        </section>
+    </section>
+    
+
+<!--Script files used-->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+</body>
+</html>  
