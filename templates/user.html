@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>User</title>
+	<meta id="option" data-name="{{ opt }}">
+	<link rel="icon" type="image/png" href="static/images/icons/home1.jpg"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link href="static/style.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+<div>
+    
+    <div style = "padding-left:150px; padding-top: 100px; padding-bottom:100px">
+        <h1>Book a pick-up request</h1>
+        <button onclick = "func()"  class = "btn btn-outline-primary">Book</button>
+        <br><br>
+        <iframe style = "display:none" id = "book" src="https://docs.google.com/forms/d/e/1FAIpQLScJjbIYmUymWnH8ep1BIHZ1AZ6DXjbV5EyFDhVbB1uE9gag0A/viewform?embedded=true" width="640" height="2317" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
+
+</div>
+<script>
+ function func(){
+    document.getElementById('book').style.display= "block";
+ }
+</script>
+{% endblock %}
