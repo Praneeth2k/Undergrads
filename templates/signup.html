@@ -52,7 +52,7 @@
 {% block body %}
 
 	<div class="limiter">
-		<div class="container-login100" style = "background: url('static/images/download1.jpg') no-repeat;width : 100%;height : 126vh;background-size: 100%;">
+		<div class="container-login100" style = "background: url('static/images/download1.jpg') no-repeat;width : 100%;height : 156vh;background-size: 130%;">
 			<div class="wrap-login100 p-t-0 p-b-20" style = "background-color:#ffff;">
 				<form action="/signup" method="POST" class="login100-form validate-form">
 					{{ form.hidden_tag() }}
@@ -61,7 +61,7 @@
 						Signup
 					</span>
 					<span class="login100-form-avatar">
-						<img src="static/images/logo.jpeg" alt="AVATAR">
+						<img src="static/images/logo_hs.jpg" alt="AVATAR">
 					</span>
 					<fieldset class="form-group">
 						<legend class="border-bottom mb-4">Join Today</legend>
@@ -109,7 +109,7 @@
 								{{ form.email(class="form-control form-control-lg is-valid") }}
 							{% endif %}
 						</div>
-						<div class="form-group">
+						<div class="form-group p-r-9 p-l-9">
 							{{ form.address.label(class="form-control-label") }}
 							{% if form.address.errors %}
 								{{ form.address(class="form-control form-control-lg is-invalid") }}
